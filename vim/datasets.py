@@ -9,10 +9,6 @@ from torchvision.datasets.folder import ImageFolder, default_loader
 from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.data import create_transform
 
-from torch.utils import Dataset
-import SimpleItk as sitk
-import numpy as np
-import torch
 
 class INatDataset(ImageFolder):
     def __init__(self, root, train=True, year=2018, transform=None, target_transform=None,
@@ -55,37 +51,7 @@ class INatDataset(ImageFolder):
             self.samples.append((path_current, target_current_true))
 
     # __getitem__ and __len__ inherited from ImageFolder
-            
-class CTDataset(Dataset):
-    def __init__(self, root, train=True, transform=None, target_transform=None, loader=sitk.ReadImage):
-        self.root = root # path to dataset
-        self.train = train
-        self.transform = transform
-        self.target_transform = target_transform
-        self.loader = loader
 
-        # assuming that images and labels have same IDs
-        if train:
-            self.img_path = os.path.join(root, "imagesTr/")
-            self.label_path = os.path.join(root, "labelsTr/")
-            self.img_list = os.listdir(self.img_path)
-        else:
-            self.img_path = os.path.join(root, "imagesVal/")
-            self.label_path = os.path.join(root, "labelsVal/")
-            self.img_list = os.listdir(self.img_path)
-
-    def __len__(self):
-        return len(self.fids)
-    
-    def __getitem__(self, idx):
-        img_filename = self.img_list[idx]
-
-        img = sitk.GetArrayFromImage(sitk.ReadImage(self.img_path + img_filename))
-        label = sitk.GetArrayFromImage(sitk.ReadImage(self.img_path + img_filename)).astype(np.uint8)
-        img = torch.FloatTensor(img).unsqueeze(0)
-        label = torch.FloatTensor(label).unsqueeze(0)
-
-        return img, label, img_filename
 
 def build_dataset(is_train, args):
     transform = build_transform(is_train, args)
@@ -105,9 +71,6 @@ def build_dataset(is_train, args):
         dataset = INatDataset(args.data_path, train=is_train, year=2019,
                               category=args.inat_category, transform=transform)
         nb_classes = dataset.nb_classes
-    elif args.data_set == 'CT':
-        dataset = CTDataset(args.data_path, train=is_train, transform=transform)
-        nb_classes = None
 
     return dataset, nb_classes
 
