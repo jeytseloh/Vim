@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '/home/jiaxi/Vim/vim')
+sys.path.insert(0, '/home/jiaxi/Vim/')
 
 import argparse
 import datetime
