@@ -24,7 +24,7 @@ from mamba_ssm.modules.mamba_simple import Mamba
 from mamba_ssm.utils.generation import GenerationMixin
 from mamba_ssm.utils.hf import load_config_hf, load_state_dict_hf
 
-from utils.utils_3d import PatchEmbed3D
+from utils_3d import PatchEmbed3D
 from monai.networks.blocks.dynunet_block import UnetOutBlock
 
 from rope import *
