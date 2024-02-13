@@ -27,10 +27,10 @@ class Dataset_3D(Dataset):
             self.tr_flag = "Tr"
             self.img_path = os.path.join(dataset_path, f"images{self.tr_flag}/")
             self.label_path = os.path.join(dataset_path, f"labels{self.tr_flag}/")
-        # else:
-        #     self.ts_flag = "Ts"
-        #     self.img_path = os.path.join(dataset_path, f"images{self.ts_flag}/")
-        #     self.label_path = os.path.join(dataset_path, f"labels{self.ts_flag}/")
+        else:
+            self.ts_flag = "Ts"
+            self.img_path = os.path.join(dataset_path, f"images{self.ts_flag}/")
+            self.label_path = os.path.join(dataset_path, f"labels{self.ts_flag}/")
 
         self.img_list = [f for f in os.listdir(self.img_path) if not f.startswith('._')] # macos
         # self.img_list = os.listdir(self.img_path)
