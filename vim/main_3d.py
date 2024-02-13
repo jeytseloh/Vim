@@ -199,6 +199,8 @@ def get_args_parser():
     parser.set_defaults(if_amp=True)
 
     parser.add_argument('--local-rank', default=0, type=int)
+
+    parser.add_argument('--gpu', default=0, type=int, help='GPU id to use')
     return parser
 
 def main(args):
