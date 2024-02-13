@@ -51,7 +51,12 @@ class Dataset_3D(Dataset):
         return img, label, img_filename
     
 def build_dataset_3d(is_train, args):
-    transforms = build_transforms_3d(is_train, args)
+    # transforms = build_transforms_3d(is_train, args)
+    transforms = Compose([
+            RandomFlip_LR(prob=0.5),
+            RandomFlip_UD(prob=0.5),
+            # RandomRotate()
+        ])
     dataset = Dataset_3D(dataset_path=args.data_path, is_train=is_train, transform=transforms)
     return dataset
 
