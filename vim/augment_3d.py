@@ -6,7 +6,7 @@ from timm.data.transforms import RandomResizedCropAndInterpolation
 import numpy as np
 from torchvision import datasets
 
-from utils.Data_Transform import Resize, RandomCrop, RandomFlip_LR, ToTensor, Normalize, Compose
+from utils_3d.Data_Transform import Resize, RandomCrop, RandomFlip_LR, ToTensor, Normalize, Compose
 
 
 def new_data_aug_generator_3d(args = None):

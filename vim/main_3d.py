@@ -19,19 +19,19 @@ from timm.optim import create_optimizer
 from timm.utils import NativeScaler, get_state_dict, ModelEma
 
 # from datasets import build_dataset
-from vim.vim_3d.datasets_3d import build_dataset_3d
-from vim.engine import train_one_epoch, evaluate
-from vim.losses import DistillationLoss
-from vim.samplers import RASampler
+from datasets_3d import build_dataset_3d
+from engine import train_one_epoch, evaluate
+from losses import DistillationLoss
+from samplers import RASampler
 # from augment import new_data_aug_generator
-from vim.vim_3d.augment_3d import new_data_aug_generator_3d
+from augment_3d import new_data_aug_generator_3d
 
 from contextlib import suppress
 
 # import vim.models_mamba as models_mamba
 import models_mamba_3d
 
-import vim.utils as utils
+import utils
 
 # log about
 import mlflow
