@@ -386,7 +386,9 @@ class VisionMamba3D(nn.Module):
 @register_model
 def vim3d_tiny_patch16_512_bimambav2_final_pool_mean_abs_pos_embed_rope_also_residual(pretrained=False, **kwargs):
     model = VisionMamba3D(
-        img_size=512, patch_size=16, embed_dim=192, depth=24, rms_norm=True, residual_in_fp32=True, fused_add_norm=True, final_pool_type='mean', if_abs_pos_embed=True, if_rope=True, if_rope_residual=True, bimamba_type="v2", **kwargs)
+        patch_size=16, embed_dim=192, depth=24, rms_norm=True, 
+        residual_in_fp32=True, fused_add_norm=True, final_pool_type='mean', if_abs_pos_embed=True, if_rope=True, 
+        if_rope_residual=True, bimamba_type="v2", **kwargs)
     model.default_cfg = _cfg()
     if pretrained:
         checkpoint = torch.hub.load_state_dict_from_url(
