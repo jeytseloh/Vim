@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, '/home/jiaxi/Vim/vim')
+
 import argparse
 import datetime
 import numpy as np
@@ -17,9 +20,9 @@ from timm.utils import NativeScaler, get_state_dict, ModelEma
 
 # from datasets import build_dataset
 from datasets_3d import build_dataset_3d
-from vim.engine import train_one_epoch, evaluate
-from vim.losses import DistillationLoss
-from vim.samplers import RASampler
+from engine import train_one_epoch, evaluate
+from losses import DistillationLoss
+from samplers import RASampler
 # from augment import new_data_aug_generator
 from augment_3d import new_data_aug_generator_3d
 
