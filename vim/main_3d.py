@@ -275,21 +275,21 @@ def main(args):
         drop_last=False
     )
 
-    # mixup
+    # mixup - removed num_classes
     mixup_fn = None
     mixup_active = args.mixup > 0 or args.cutmix > 0. or args.cutmix_minmax is not None
     if mixup_active:
         mixup_fn = Mixup(
             mixup_alpha=args.mixup, cutmix_alpha=args.cutmix, cutmix_minmax=args.cutmix_minmax,
             prob=args.mixup_prob, switch_prob=args.mixup_switch_prob, mode=args.mixup_mode,
-            label_smoothing=args.smoothing, num_classes=args.nb_classes)
+            label_smoothing=args.smoothing)
 
     # MODIFY MODEL FOR 3D
     print(f"Creating model: {args.model}")
     model = create_model(
         args.model,
         pretrained=False,
-        num_classes=args.nb_classes,
+        # num_classes=args.nb_classes,
         drop_rate=args.drop,
         drop_path_rate=args.drop_path,
         drop_block_rate=None,
@@ -408,7 +408,7 @@ def main(args):
         teacher_model = create_model(
             args.teacher_model,
             pretrained=False,
-            num_classes=args.nb_classes,
+            # num_classes=args.nb_classes,
             global_pool='avg',
         )
         if args.teacher_path.startswith('https'):
