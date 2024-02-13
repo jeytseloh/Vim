@@ -5,7 +5,7 @@ import SimpleITK as sitk
 from torch.utils.data import Dataset
 import torch
 
-from vim.vim_3d.utils.utils_3d import adjust_window, zscore_normalization, ct_normalization, calculate_foreground_stats
+from utils.utils_3d import adjust_window, zscore_normalization, ct_normalization, calculate_foreground_stats
 from utils.Data_Transform import RandomCrop, RandomFlip_LR, RandomFlip_UD, Center_Crop, Compose,Resize
 
 class Dataset_3D(Dataset):
